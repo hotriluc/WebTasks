@@ -1,0 +1,22 @@
+body{
+  background-color: #303a52;
+}
+
+hr{
+
+  border-style: dotted none none none;
+  border-width: thick;
+  border-color: white;
+  height: 40%;
+  width: 5%;
+}
+
+h1{
+  color: #fc85ae;
+}
+h3{
+  color: #fc85ae;
+}
+a:visited{
+  color:yellow;
+}
