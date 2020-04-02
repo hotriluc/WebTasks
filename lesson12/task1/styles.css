@@ -1,0 +1,45 @@
+/* News Section */
+#news {
+  margin: 2rem auto;
+  padding: 0 25%;
+
+}
+
+/* About Section */
+#about {
+  margin: 2rem 0 auto;
+  padding: 0 25%;
+
+}
+
+/* Something Section */
+#something {
+  margin: 2rem 0 auto;
+  padding: 0 25%;
+
+}
+
+.section-header{
+  color: blue;
+}
+.link{
+  display:block;
+  color: blue;
+  text-decoration: none;
+  text-align: right;
+
+}
+.link:hover{
+  color:red;
+  text-decoration: underline;
+
+}
+
+.wrapper{
+  padding: 20px;
+  line-height: 25px;
+  text-align: justify;
+  border-color: black;
+  border-style: solid;
+  border-width: thin;
+}
