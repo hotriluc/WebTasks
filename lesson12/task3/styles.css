@@ -1,0 +1,36 @@
+.wrapper{
+  border: solid 1px;
+  padding: 0 3%;
+  margin: 0 25%;
+  text-align: justify;
+  line-height: 20px
+}
+
+.more {
+  text-align: right
+}
+.link{
+  padding: 5px 20px;
+  text-decoration: none;
+
+
+}
+.link:hover{
+  background: pink;
+  border-radius: 5px;
+  color:white;
+  text-decoration: none;
+}
+
+h1,h2{
+  text-align: center;
+}
+
+a{
+  color: pink;
+  text-decoration: none;
+}
+a:hover{
+  color: black;
+  text-decoration: underline;
+}
