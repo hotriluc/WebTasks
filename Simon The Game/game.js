@@ -11,14 +11,20 @@ var gameStarted = false;
 $(document).keypress(function(){
 
   if(!gameStarted){
-    console.log("hello");
+    //After player loss we should set level to 0 and clear game pattern
+    level = 0;
+    gamePattern = [];
+
+
     gameStarted = true;
     nextSequence();
+
   }
 
 });
 
 //Taking user clicked pattern
+
 $("div.btn").click(function(){
   var userChosenColor = ($(this).attr("id"));
 
@@ -32,8 +38,9 @@ $("div.btn").click(function(){
 
   //Checking User Clicked Pattern
   checkAnswer(userGamePattern.length-1);
-
 });
+
+
 
 
 
@@ -54,7 +61,17 @@ function checkAnswer(currentLevel){
         }, 1000);
       }
 
-    }else{console.log("loss");}
+    //if pattern is wrong setting GameStarted to false
+    }else{
+      console.log("loss");
+      playSound("sounds/wrong.mp3")
+
+      gameStarted = false;
+
+      $("#level-title").text("You Lost. Press A Key to restart the game.")
+
+
+    }
 
 }
 
