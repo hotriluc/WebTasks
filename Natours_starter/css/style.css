@@ -1,203 +1,149 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
 /* Resetting style */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 /* Setting style to root */
-
 html {
-    font-size: 62.5%;
-}
+  font-size: 62.5%; }
 
-
-body  {
-  
-    font-family: "Lato",sans-serif;
-    font-weight: 400;
-    
-    line-height: 1.7;
-    color: #777;
-    padding: 3rem;
-    box-sizing: border-box;  
-}
+body {
+  font-family: "Lato",sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
 
 /* Header Section */
-.header{
-    height: 95vh;
-    background-image: linear-gradient(
-        to right bottom,
-        rgba(126, 213, 111, 0.801),
-        rgba(40, 180, 133, 0.801)),
-         url(../img/hero.jpg);
-    background-size: cover;
-    background-position: top;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-    position: relative;
-}
-/* Container that consists logo */
-.header__logo-box{
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: relative; }
 
-}
+/* Container that consists logo */
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem; }
 
 /* Logo */
-.header__logo{
-    height: 3.5rem;
-}
+.header__logo {
+  height: 3.5rem; }
+
 /* Containter that consists heading and button */
-.header__text-box{
-    position: absolute;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    
-}
+.header__text-box {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center; }
 
 /* Header's heading */
-.heading-primary{
-    color: white;
-    text-transform: uppercase;
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
 
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-}
 /* Heading main part */
-.heading-primary--main{
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: .9s;
-    animation-timing-function: ease-out;
-}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft;
+  animation-duration: .9s;
+  animation-timing-function: ease-out; }
+
 /* Heading sub part */
-.heading-primary--sub{
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight .9s ease-out;
-    /* animation-name: moveInRight;
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveInRight .9s ease-out;
+  /* animation-name: moveInRight;
     animation-duration: 0.8s;
-    animation-timing-function: ease-out; */
-}
+    animation-timing-function: ease-out; */ }
 
 /* Animation for heading-main part */
-@keyframes moveInLeft{
-    0%{
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-    80%{
-        transform: translateX(1rem);
-    }
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInRight{
-    0%{
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80%{
-        transform: translateX(-1rem);
-    }
-
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInBottom{
-    0%{
-        opacity: 0;
-        transform: translateY(10rem);
-    }
-
-
-    100%{
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 .btn:link, .btn:visited {
-    border-radius: 10rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    transition: all .2s;
-    position: relative;
-    font-size: 1.6rem;
-
-}
+  border-radius: 10rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem; }
 
 .btn:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-    
-}
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
 
 .btn:active {
-    transform: translateY(0.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
-}
+  transform: translateY(0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
-    background-color: white;
-    color: #777;
-}
+  background-color: #fff;
+  color: #777; }
 
 .btn::after {
-    content: "";
-    display: inline-block;
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    border-radius: 10rem;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: .4s;
-}
+  content: "";
+  display: inline-block;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 10rem;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: .4s; }
 
 .btn--white::after {
-    background-color: white;
-}
+  background-color: #fff; }
 
 .btn:hover::after {
-    transform: scale(1.5);
-    opacity: 0;
-}
+  transform: scale(1.5);
+  opacity: 0; }
 
 .btn--animated {
-    animation: moveInBottom .4s ease-out .75s;
-    animation-fill-mode: backwards;
-}
-
-
+  animation: moveInBottom .4s ease-out .75s;
+  animation-fill-mode: backwards; }
