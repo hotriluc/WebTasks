@@ -50,6 +50,15 @@
         }
     }
 
+    &--green{
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after{
+            background-color: $color-primary;
+        }
+    }
+
     &--animated {
         animation: moveInBottom .4s ease-out .75s;
         animation-fill-mode: backwards;
@@ -58,7 +67,9 @@
 }
 
 
+
 .btn-text {
+    
     &:link,
     &:visited {
         font-size: $default-font-size;
