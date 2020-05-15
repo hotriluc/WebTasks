@@ -1,0 +1,113 @@
+.u-margin-bottom-small {
+  margin-bottom: 1rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 2rem; }
+
+.u-margin-right-medium {
+  margin-right: 2rem; }
+
+.u-small-padding-top-bottom {
+  padding: 1rem 0; }
+
+.transform-180 {
+  transform: rotateY(180deg) rotateX(180deg); }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+  .flex-container .col {
+    flex: 0 0 100%; }
+  .flex-container .col-1-of-2 {
+    flex: 0 0 50%; }
+  .flex-container .col-1-of-3 {
+    flex: 0 0 33.3333%; }
+  .flex-container .col-1-of-4 {
+    flex: 0 0 25%; }
+
+.flex-container-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.section-comments {
+  padding: 10rem 0;
+  background-color: #eee; }
+
+.comment-box {
+  padding: 0 2rem 0;
+  font-size: 1.4rem; }
+  .comment-box__heading {
+    color: #83218b;
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block; }
+  .comment-box__btn {
+    display: inline-block;
+    color: #777; }
+    .comment-box__btn:not(:last-child) {
+      margin-right: 2rem; }
+    .comment-box__btn--new-comment {
+      margin-left: auto;
+      text-decoration: none;
+      color: #000;
+      font-weight: 400; }
+    .comment-box__btn--like, .comment-box__btn--dislike, .comment-box__btn--reply {
+      width: 2.5rem;
+      height: 2.5rem; }
+    .comment-box__btn--like {
+      top: 0;
+      left: 5rem; }
+    .comment-box__btn--dislike {
+      top: 30%;
+      left: 10rem; }
+    .comment-box__btn--reply {
+      top: 0;
+      left: 15rem; }
+  .comment-box__user-avatar {
+    vertical-align: middle;
+    height: 1.5rem;
+    width: 2.5rem;
+    display: inline-block; }
+  .comment-box__username {
+    vertical-align: middle;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: inline-block; }
+  .comment-box__time {
+    text-align: right;
+    color: #777; }
+  .comment-box__replies-counter {
+    display: inline-block; }
+  .comment-box__circle-counter {
+    color: white;
+    font-weight: bold;
+    background-color: #83218b;
+    height: 3rem;
+    width: 3rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    text-align: center;
+    display: flex; }
+
+body {
+  font-family: "Lato",sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  padding: 3rem; }

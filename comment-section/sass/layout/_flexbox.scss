@@ -1,0 +1,36 @@
+.flex-container    {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    .col {
+        flex: 0 0 100%;
+    }
+
+    .col-1-of-2 {
+        flex: 0 0 50%;
+    }
+
+    .col-1-of-3 {
+        flex: 0 0 33.3333%;
+    }
+    
+    .col-1-of-4 {
+        flex: 0 0 25%;
+    }
+
+    
+}
+
+.flex-container-2    {
+    
+    display: flex;
+    
+    flex-direction: row;
+    align-items: center;
+
+
+    
+}
+
