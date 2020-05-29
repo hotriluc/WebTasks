@@ -1,6 +1,8 @@
 .btn {
 
-    &:link,&:visited {
+    &,
+    &:link,
+    &:visited {
         border-radius: 10rem;
         
         text-decoration: none;
@@ -11,6 +13,11 @@
         // backface-visibility: hidden;
         position: relative;
         font-size: $default-font-size;
+        
+        
+        //Changes for <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -23,7 +30,9 @@
         }
     }
 
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(0.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
     }
