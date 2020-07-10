@@ -60,7 +60,7 @@ body  {
     backface-visibility: hidden;
     
     @include respond(tab-port) {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     @include respond(phone) {
