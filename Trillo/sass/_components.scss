@@ -2,21 +2,69 @@
 
 .logo {
     height: 3.25rem;
+    margin-left: 3rem;
 }
 
 // SearchBox
 .search {
-    &__input {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: orangered;
 
+    &__input {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        background-color: var(--color-grey-light-2);
+        border: none;
+        border-radius: 10rem;
+        padding: .7rem 2rem;
+        width: 90%;
+        transition: all .3s;
+        // text-align: center;
+        margin-right: -3.35rem;
+        
+        
+
+        &:focus {
+            outline: none;
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+
+        //Making placeholder font lighter 
+        &::-webkit-input-placeholder {
+            font-weight: 100;
+            color: var(--color-grey-light-4);
+        }
     }
 
     &__button {
+        border: none;
+        background-color: var(--color-grey-light-2);
+        
+        &:focus {
+            outline: none;
+            
+        }
 
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+
+    //Changing background of the button when input is in focus (button is a sibling of input)
+    &__input:focus ~ &__button{
+        background-color: var(--color-grey-light-3);
     }
 
     &__icon {
         height: 2rem;
         width: 2rem;
+        //filling svg with color
+        fill: var(--color-grey-dark-3)
     }
 }
 
