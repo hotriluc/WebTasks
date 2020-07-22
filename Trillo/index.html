@@ -116,37 +116,37 @@
 
 
                     <!-- Review Block -->
-                    <div class="review">
-                        <h1 class="review__heading">Hotel Las Palmas</h1>
+                    <div class="overview">
+                        <h1 class="overview__heading">Hotel Las Palmas</h1>
 
-                        <div class="review__stars">
-                            <svg class="review__icon-star">
+                        <div class="overview__stars">
+                            <svg class="overview__icon-star">
                                 <use xlink:href="img/sprite.svg#icon-star"></use>
                             </svg>
-                            <svg class="review__icon-star">
+                            <svg class="overview__icon-star">
                                 <use xlink:href="img/sprite.svg#icon-star"></use>
                             </svg>
-                            <svg class="review__icon-star">
+                            <svg class="overview__icon-star">
                                 <use xlink:href="img/sprite.svg#icon-star"></use>
                             </svg>
-                            <svg class="review__icon-star">
+                            <svg class="overview__icon-star">
                                 <use xlink:href="img/sprite.svg#icon-star"></use>
                             </svg>
-                            <svg class="review__icon-star">
+                            <svg class="overview__icon-star">
                                 <use xlink:href="img/sprite.svg#icon-star"></use>
                             </svg>
                         </div>
 
-                        <div class="review__location">
-                            <svg class="review__icon-location">
+                        <div class="overview__location">
+                            <svg class="overview__icon-location">
                                 <use xlink:href="img/sprite.svg#icon-location-pin"></use>
                             </svg>
                             <button class="btn-inline">Albufeira, Portugal</button>
                         </div>
 
-                        <div class="review__rating">
-                            <div class="review__rating-avg">8.6</div>
-                            <div class="review__rating-count">429 votes</div>
+                        <div class="overview__rating">
+                            <div class="overview__rating-avg">8.6</div>
+                            <div class="overview__rating-count">429 votes</div>
                         </div>
                     </div>
 
@@ -155,6 +155,7 @@
                         <div class="description">
                             <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam perspiciatis odit hic exercitationem dolores veniam eos, blanditiis totam! Repellat nobis laborum eum ipsa aspernatur officia aperiam repudiandae recusandae odit animi!</p>
                             <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam perspiciatis odit hic exercitationem dolores veniam eos, blanditiis totam! Repellat nobis laborum eum ipsa aspernatur officia aperiam repudiandae recusandae odit animi!</p>
+                            
                             
                             <ul class="list">
                                 <li class="list__item">Close to the beach</li>
@@ -180,8 +181,44 @@
                             </div>
                         </div>
 
+
+                        <!-- Figure html5 element is really good to use for review 
+                            blockquote for review text
+                        -->
+                        
                         <div class="user-reviews">
-                            Reivews
+                            <figure class="review">
+                                <blockquote class="review__text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi, totam, itaque officia ex.
+                                </blockquote>
+                                <figcaption class="review__user">
+                                    <img src="img/user-1.jpg" alt="User1" class="review__photo">
+                                    <div class="review__user-box">
+                                        <p class="review__user-name">Nick Smith</p>
+                                        <p class="review__user-date">Feb 23rd, 2020</p>
+                                    </div>
+                                    <div class="review__rating">8.5</div>
+
+                                </figcaption>
+                            </figure>
+
+                            <figure class="review">
+                                <blockquote class="review__text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi.
+                                </blockquote>
+                                <figcaption class="review__user">
+                                    <img src="img/user-2.jpg" alt="User1" class="review__photo">
+                                    <div class="review__user-box">
+                                        <p class="review__user-name">Mary Thomas</p>
+                                        <p class="review__user-date">Sep 13th, 2020</p>
+                                    </div>
+                                    <div class="review__rating">9.3</div>
+
+                                </figcaption>
+
+                            </figure>
+
+                            <button class="btn-inline">Show all <span>&rarr;</span></button>
                         </div>
 
                     </div>
