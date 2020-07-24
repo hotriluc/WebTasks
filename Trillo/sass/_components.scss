@@ -12,7 +12,12 @@
     align-items: center;
     justify-content: center;
     
-
+    @media only screen and (max-width:$bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        margin-left: -.5rem;
+        
+    }
     
     &__input {
         //Inheriting color, font-family and font-size of a parent (header)
@@ -28,12 +33,20 @@
         // text-align: center;
         margin-right: -3.35rem;
         
+        @media only screen and (max-width:$bp-smallest) {
+            
+            width: 95%;
+        }
         
-
         &:focus {
             outline: none;
             width: 100%;
             background-color: var(--color-grey-light-3);
+
+            @media only screen and (max-width:$bp-smallest) {
+            
+                width: 95%;
+            }
         }
 
         //Making placeholder font lighter 
@@ -77,6 +90,8 @@
     align-items: center;
     justify-content: space-around;
     align-self: stretch;
+    position: relative;
+    
 
     //Selecting direct children of user-nav (icon-box and user-photo)
     & > * {
@@ -133,6 +148,13 @@
     &__user-name {
 
     }
+
+    &__user {
+        position: relative;
+
+    }
+
+ 
 }
 
 
@@ -144,14 +166,30 @@
     font-size: 1.4rem;
     margin-top: 3.5rem;
 
+    
+    @media only screen and (max-width:$bp-medium) {
+        margin-top: 0;
+        display: flex;
+    }
+
     &__item {
         position: relative;
 
         &:not(:last-child){
             margin-bottom: .5rem;
+
+            @media only screen and (max-width:$bp-medium) {
+                margin-bottom: 0;
+            }
+        }
+
+        @media only screen and (max-width:$bp-medium) {
+            //letting all items to grow 
+            flex: 1;
+        
         }
         
-
+       
     }
 
     &__item::before {
@@ -203,6 +241,18 @@
             //z-index only works if position is set
             position: relative;
             z-index: 10;
+            
+            @media only screen and (max-width:$bp-medium) {
+                
+                justify-content: center;
+                padding: 2rem;
+            }
+
+            @media only screen and (max-width:$bp-small) {
+                
+                flex-direction: column;
+                padding: 1.5rem .5rem;
+            }
 
         }
     }
@@ -215,12 +265,21 @@
         height: 1.75rem;
         fill: currentColor;
         margin-right: 2rem;
+
+        @media only screen and (max-width:$bp-small) {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0;
+            margin-bottom: .5rem ;
+        }
     }
 
     &__text {
 
     }
 
+
+    
 }
 
 // Legal text
@@ -231,6 +290,10 @@
    text-align: center;
    padding: 2.5rem;
    color: var(--color-grey-light-4);
+   
+   @media only screen and (max-width:$bp-medium) {
+        display: none;
+    }
 }
 
 
@@ -255,12 +318,19 @@
     border-bottom: var(--line);
     align-items: center;
 
+    
+
     &__heading {
         font-size: 2.25rem;
         font-family: 300;
         text-transform: uppercase;
         letter-spacing: 1px;
-        padding: 1.5rem 3rem;
+        padding: 1.25rem 2rem;
+
+        @media only screen and (max-width:$bp-small) {
+            font-size: 1.8rem;
+            padding: 1.5rem 2rem;
+        }
     }
 
     &__stars {
@@ -303,17 +373,33 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @media only screen and (max-width:$bp-small) {
+            
+            padding: 0 1.5rem;
+        }
+        
     }
 
     &__rating-avg {
        font-size: 2.25rem;
        font-weight: 300;
        margin-bottom: -3px;
+
+       @media only screen and (max-width:$bp-small) {
+            font-size: 1.8rem;
+           
+        }
     }
 
     &__rating-count {
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width:$bp-small) {
+            font-size: .5rem;
+           
+        }
     }
 
 }
@@ -405,17 +491,28 @@
         margin-right: 1rem;
 
         //For older browsers
-        // background-image: url(../img/chevron-thin-right.svg);
-        // background-size: cover;
+         background-image: url(../img/chevron-thin-right.svg);
+         background-size: cover;
         
         
+
+
         // For new browsers
-        background-color: var(--color-primary);
-        -webkit-mask-image: url(../img/chevron-thin-right.svg);
-        -webkit-mask-size: cover;
-        mask-image: url(../img/chevron-thin-right.svg);
-        mask-size: cover;
+        @supports (-webkit-mask-image: url(../img/chevron-thin-right.svg)) 
+        or (-webkit-mask-size:cover) {
+            background-color: var(--color-primary);
+            -webkit-mask-image: url(../img/chevron-thin-right.svg);
+            -webkit-mask-size: cover;
+            mask-image: url(../img/chevron-thin-right.svg);
+            mask-size: cover;
+            background-image: none;
+        }
+        
+     
+         
+        
     }
+    
 }
 
 //Recommend
@@ -431,7 +528,7 @@
     }
 
     &__friends {
-
+        display: flex;
     }
 
     &__photo {
@@ -442,8 +539,11 @@
         border: 3px solid white;
 
         &:not(:last-child){
-            margin-right: -1.5rem ;
+            margin-right: -2rem ;
         }
+
+     
+       
     }
 }
 
@@ -459,6 +559,11 @@
     position: relative;
     overflow: hidden;
 
+    @media only screen and (max-width:$bp-medium) {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+
     &__text {
         
         margin-bottom: 2rem;
@@ -470,6 +575,9 @@
 
         display: flex;
         align-items: center;
+        position: relative;
+
+
         
     }
 
@@ -524,6 +632,10 @@
     padding: 3.5rem 0;
     text-align: center;
 
+    @media only screen and (max-width:$bp-medium) {
+        padding: 2.5rem;
+        
+    }
 
     &__book-now {
         font-size: 2rem;
@@ -589,3 +701,4 @@
     }
   
 }
+
