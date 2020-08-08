@@ -165,47 +165,42 @@ Coding challenge 1
 //     console.log('variable is not defined');
 // }
 
-var johnTeamScore  = [97, 134, 105];
-var mikeTeamScore  = [97, 134, 104];
-var maryTeamScore = [97, 134, 105];
+/*=================================== 
+codin challenge 2*/
+// var johnTeamScore  = [97, 134, 105];
+// var mikeTeamScore  = [97, 134, 104];
+// var maryTeamScore = [97, 134, 105];
 
-var avgTeamOne = (johnTeamScore.reduce((sum, score) => sum +score, 0))/3;
-var avgTeamTwo = (mikeTeamScore.reduce((sum, score) => sum +score, 0))/3;
-var avgTeamThree = (maryTeamScore.reduce((sum, score) => sum + score, 0))/3;
+// var avgTeamOne = (johnTeamScore.reduce((sum, score) => sum +score, 0))/3;
+// var avgTeamTwo = (mikeTeamScore.reduce((sum, score) => sum +score, 0))/3;
+// var avgTeamThree = (maryTeamScore.reduce((sum, score) => sum + score, 0))/3;
 
-console.log("Jonh's team avg score: "+avgTeamOne );
-console.log("Mike's team avg score: "+ avgTeamTwo);
-console.log("Mary's team avg score: "+ avgTeamThree);
+// console.log("Jonh's team avg score: "+avgTeamOne );
+// console.log("Mike's team avg score: "+ avgTeamTwo);
+// console.log("Mary's team avg score: "+ avgTeamThree);
 
-// console.log('between mike and john');
-// if (avgTeamOne > avgTeamTwo) {
+
+
+// console.log('between three');
+// if ( (avgTeamOne > avgTeamTwo) && (avgTeamOne> avgTeamThree)) {
 //     console.log("John's team WON");
-// }  else if (avgTeamOne===avgTeamTwo) {
-//     console.log("DRAW");
-// }  else {
+// } else if ((avgTeamTwo > avgTeamOne) && (avgTeamTwo > avgTeamThree)) {
 //     console.log("Mike's team WON");
+// } else if ((avgTeamThree > avgTeamOne) && (avgTeamThree > avgTeamTwo)) {
+//     console.log("Mary's team WON");
+// } else if ((avgTeamOne===avgTeamTwo) && (avgTeamOne===avgTeamThree) && (avgTeamTwo===avgTeamThree)) {
+//     console.log("triple");
 // }
 
-console.log('between three');
-if ( (avgTeamOne > avgTeamTwo) && (avgTeamOne> avgTeamThree)) {
-    console.log("John's team WON");
-} else if ((avgTeamTwo > avgTeamOne) && (avgTeamTwo > avgTeamThree)) {
-    console.log("Mike's team WON");
-} else if ((avgTeamThree > avgTeamOne) && (avgTeamThree > avgTeamTwo)) {
-    console.log("Mary's team WON");
-} else if ((avgTeamOne===avgTeamTwo) && (avgTeamOne===avgTeamThree) && (avgTeamTwo===avgTeamThree)) {
-    console.log("triple");
-}
-
-if ( (avgTeamOne===avgTeamTwo)) {
-    console.log("Team John  and Team Mike DRAW");
-} 
-if (avgTeamOne === avgTeamThree) {
-    console.log("Team John  and Team Mary DRAW");
-}
-if (avgTeamTwo === avgTeamThree) {
-    console.log("Team Mike  and Team Mary DRAW");
-}
+// if ( (avgTeamOne===avgTeamTwo)) {
+//     console.log("Team John  and Team Mike DRAW");
+// } 
+// if (avgTeamOne === avgTeamThree) {
+//     console.log("Team John  and Team Mary DRAW");
+// }
+// if (avgTeamTwo === avgTeamThree) {
+//     console.log("Team Mike  and Team Mary DRAW");
+// }
 
 
 // let avgTeamScore = [];
@@ -215,3 +210,109 @@ if (avgTeamTwo === avgTeamThree) {
 // console.log(avgTeamScore);
 
 
+/*=================================== 
+Functions*/
+
+// function sayHelloTo (name) {
+//     console.log("Hello "+name);
+// }
+
+// function sum (a, b){
+//     return a + b ;
+// }
+
+// sayHelloTo("LUC");
+// console.log(sum(3,4));
+
+
+// function calcuateAge (currentYear, bithYear) {
+//     return currentYear - bithYear;
+// }
+
+ 
+
+// function retireYearLeft(retireAge, birthYear, name) {
+    
+//     let yourAge = calcuateAge(2020, birthYear);
+
+//     if (yourAge  >= retireAge) {
+//         console.log(name+" is already retired");
+//     } else {
+//         console.log(name+ " will retire in "+(retireAge - yourAge)+"years");
+//     }
+
+// }
+
+// retireYearLeft(65, 1997, 'Luc');
+
+/*=================================== 
+Function Expression*/
+
+// var whatIsYourJob = function(job, name) {
+//     switch(job) {
+//         case 'teacher':
+//         case 'tutor': return name+" is a teacher";
+
+//         case 'football player':
+//             return name+' is doing sport';
+
+//         default:
+//             return 'actually i don\'t know what '+name+' is doing' ;
+//     }
+// }
+
+// console.log(whatIsYourJob('teacher','Max'));
+
+/*=================================== 
+Arrays*/
+// function arraySum(arr) {
+//     return arr.reduce((sum, curVal)=> sum + curVal,0);
+// }
+
+// var a = [1,2,3,4,5]
+
+// console.log(arraySum(a));
+
+// a.push(95);
+// console.log(arraySum(a));
+
+/*=================================== 
+Coding challenge 3*/
+
+// I did it in the way if there are N - items in array not 3 like in the task
+function calculateTotal(array){
+
+    let totalWithTips = [];
+    let onlyTips = [];
+
+    //Rounding tips why not to make a waitress happier
+   array.forEach(element => {
+        if (element < 50){
+            onlyTips.push(Math.round(element*0.2));
+        } else  if(element >=50 && element <= 200) {
+            onlyTips.push(Math.round(element*0.15));
+        } else {
+            onlyTips.push(Math.round(element*0.1));
+        }
+    });
+
+    console.log("Bill: "+ array);
+    console.log("Tips: "+ onlyTips);
+    
+    
+    //Calculate total
+    for (i=0; i<array.length; i++) {
+        totalWithTips.push(array[i]+onlyTips[i]);
+    }
+
+    console.log("Total with tips: "+ totalWithTips);
+
+    //Returning tuple with two arrays;
+    return {
+       tips: onlyTips, 
+       total: totalWithTips
+    };
+}
+
+// Order of tips or total does not matter because we defined their names in return tuples;
+var {tips, total} = calculateTotal([124, 48, 268]);
