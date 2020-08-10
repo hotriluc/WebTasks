@@ -557,6 +557,12 @@ class Bill {
         return this.total;
     }
 
+    calculateAVG(){
+        let avg = this.getTotal().reduce( (sum,val)=>sum+val,0)/this.getTotal().length 
+        console.log(  avg )
+        return avg;
+    }
+
 
 }
 
@@ -570,3 +576,6 @@ console.log("Marks's bills");
 var bill_B =  new Bill([200, 324, 268, 180, 13]);
 bill_B.calculateTotal();
 console.log(bill_B.getTips(),bill_B.getTotal());
+// (johnTeamScore.reduce((sum, score) => sum +score, 0))/3;
+console.log("John's total AVG");
+avg_A = bill_A.calculateAVG();

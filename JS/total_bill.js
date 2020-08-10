@@ -117,6 +117,11 @@ class Bill {
         return this.total;
     }
 
+    calculateAVG(){
+        let avg = this.getTotal().reduce( (sum,val)=>sum+val,0)/this.getTotal().length 
+        console.log(  avg )
+        return avg;
+    }
 
 }
 
