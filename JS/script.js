@@ -280,39 +280,293 @@ Arrays*/
 Coding challenge 3*/
 
 // I did it in the way if there are N - items in array not 3 like in the task
-function calculateTotal(array){
+// function calculateTotal(array){
 
-    let totalWithTips = [];
-    let onlyTips = [];
+//     let totalWithTips = [];
+//     let onlyTips = [];
 
-    //Rounding tips why not to make a waitress happier
-   array.forEach(element => {
-        if (element < 50){
-            onlyTips.push(Math.round(element*0.2));
-        } else  if(element >=50 && element <= 200) {
-            onlyTips.push(Math.round(element*0.15));
-        } else {
-            onlyTips.push(Math.round(element*0.1));
+//     //Rounding tips why not to make a waitress happier
+//    array.forEach(element => {
+//         if (element < 50){
+//             onlyTips.push(Math.round(element*0.2));
+//         } else  if(element >=50 && element <= 200) {
+//             onlyTips.push(Math.round(element*0.15));
+//         } else {
+//             onlyTips.push(Math.round(element*0.1));
+//         }
+//     });
+
+//     console.log("Bill: "+ array);
+//     console.log("Tips: "+ onlyTips);
+    
+    
+//     //Calculate total
+//     for (i=0; i<array.length; i++) {
+//         totalWithTips.push(array[i]+onlyTips[i]);
+//     }
+
+//     console.log("Total with tips: "+ totalWithTips);
+
+//     //Returning object with two arrays as properties;
+//     return {
+//        tips: onlyTips, 
+//        total: totalWithTips
+//     };
+// }
+
+// Order of tips or total does not matter because we defined their names properties in return object;
+//var {tips, total} = calculateTotal([124, 48, 268]);
+
+
+/*=================================== 
+Objects and properties*/
+
+// var guy = {
+//     name: 'John',
+//     year: 1997,
+//     skills: ["Python", "Java", "C#"]
+// }
+
+// console.log(guy.name,guy.year, guy.skills);
+// console.log(guy['name'], guy['year'], guy['skills']);
+
+// // properties mutation
+
+// guy.name = 'Max';
+// console.log(guy.name,guy.year, guy.skills);
+
+// another way to create objects
+
+// var guy = new Object();
+// guy.name = 'Key';
+// guy.age = 29;
+// guy['skills'] = ["Python", "Java", "C#"]
+
+/*=================================== 
+Object and  methods*/
+
+// var guy = {
+//     name: 'John',
+//     birthYear: 1997,
+//     skills: ["Python", "Java", "C#"],
+
+//     calcAge: function (){
+//         this.age = 2020 - this.birthYear;
+//     }
+    
+// }
+
+// guy.calcAge();
+// console.log(guy);
+
+/*=================================== 
+Coding challenge 4*/
+
+// var John = {
+//     name: 'John',
+//     height: 2.3,
+//     mass: 85,
+//     calcBMI: function () {
+//         this.bmi = this.mass / (Math.pow(this.height,2));
+//     }
+// }
+
+// var Mike = {
+//     name: 'Mike',
+//     height: 1.5,
+//     mass: 85,
+//     calcBMI: function () {
+//         this.bmi = this.mass / (Math.pow(this.height,2));
+//     }
+// }
+
+// John.calcBMI();
+// Mike.calcBMI();
+// console.log("Jonh BMI: ",John.bmi);
+// console.log("Mike BMI: ",Mike.bmi);
+
+// if (John.bmi > Mike.bmi) {
+//     console.log("John BMI is higher");
+// } else if (John.bmi === Mike.bmi) {
+//     console.log("They are the same");
+// } else {
+//     console.log("Mike BMI is higher");
+// }
+
+
+
+/*But what if there will be N people
+    writing the new object everytime is not convinient and practical
+    you have to use classes
+*/
+// class Person {
+   
+//     constructor (name, mass, height){
+//         this.name = name;
+//         this.height = height;
+//         this.mass = mass;
+//     }
+
+//     setName(name) {
+//         this.name = name;
+//     }
+
+//     getName() {
+//         return this.name;
+//     }
+
+//     setHeight(height) {
+//         this.height = height;
+//     }
+
+//     getHeight() {
+//         return this.name;
+//     }
+
+//     setMass(mass) {
+//         this.mass = mass;
+//     }
+
+//     getMass() {
+//         return this.mass;
+//     }
+
+//     getBMI() {
+//         return this.mass / (Math.pow(this.height,2));
+//     }
+
+// }
+
+// var personA = new Person('John', 93, 1.55);
+// var personB = new Person('Mike', 94, 1.55);
+
+// var bmiPersonA = personA.getBMI();
+// var bmiPersonB = personB.getBMI();
+// console.log("Jonh BMI: ",bmiPersonA);
+// console.log("Mike BMI: ",bmiPersonB);
+
+
+// if (bmiPersonA > bmiPersonB) {
+//         console.log("John BMI is higher");
+//     } else if (bmiPersonA === bmiPersonB) {
+//         console.log("They are the same");
+//     } else {
+//         console.log("Mike BMI is higher");
+//     }
+
+/*=======================================
+    LOOPS and ITERATIONS
+*/
+
+// for (var i=0; i<=10; i++) {
+//     console.log(i);
+// }
+
+// var arr = ['a','b','c','d'];
+
+// for (var i  =0; i <arr.length;i++){
+//     console.log(arr[i]);
+// }
+
+// arr.forEach(item => console.log(item))
+
+// var i = 0;
+// while(i < arr.length) {
+//     console.log(arr[i]);
+//     i++;
+// }
+
+
+/*=======================================
+    coding challenge 5
+*/
+
+var bill = {
+    currentBill: [124, 48, 268, 180, 42],
+    onlyTips: [],
+    total:[],
+
+    calculateTips: function () {
+        for (var i = 0 ; i<this.currentBill.length; i++) {
+            
+            if ( this.currentBill[i] < 50){
+                this.onlyTips.push(Math.round( this.currentBill[i]*0.2));
+            } else  if( this.currentBill[i] >=50 &&  this.currentBill[i] <= 200) {
+                this.onlyTips.push(Math.round( this.currentBill[i]*0.15));
+            } else {
+                this.onlyTips.push(Math.round( this.currentBill[i]*0.1));
+            }
         }
-    });
-
-    console.log("Bill: "+ array);
-    console.log("Tips: "+ onlyTips);
-    
-    
-    //Calculate total
-    for (i=0; i<array.length; i++) {
-        totalWithTips.push(array[i]+onlyTips[i]);
+        
+    },
+    calculateTotal: function () {
+        for (var i = 0 ; i<this.currentBill.length; i++) {
+            this.total.push(this.currentBill[i]+this.onlyTips[i]);
+        }
     }
 
-    console.log("Total with tips: "+ totalWithTips);
-
-    //Returning tuple with two arrays;
-    return {
-       tips: onlyTips, 
-       total: totalWithTips
-    };
 }
 
-// Order of tips or total does not matter because we defined their names in return tuples;
-var {tips, total} = calculateTotal([124, 48, 268]);
+console.log("Current Bill: ",bill.currentBill);
+console.log("Calculating tips...");
+bill.calculateTips();
+console.log("Tips: ",bill.onlyTips);
+console.log("Calculating Total...");
+bill.calculateTotal();
+console.log("Total: ",bill.total);
+
+class Bill {
+    constructor(bill) {
+        this.bill = bill;
+        this.tips = [];
+        this.total = [];
+    }
+
+    setBill(bill){
+        this.bill = bill;
+    }
+    getBill() {
+        return this.bill;
+    }
+
+    calculateTips(){
+        this.bill.forEach(element => {
+            if (element < 50){
+                this.tips.push(Math.round(element*0.2));
+            } else  if(element >=50 && element <= 200) {
+                this.tips.push(Math.round(element*0.15));
+            } else {
+                this.tips.push(Math.round(element*0.1));
+            }
+        });
+    }
+
+    getTips() {
+        return this.tips;
+    }
+
+    calculateTotal() {
+        this.calculateTips();
+
+        for (var i=0; i<this.bill.length; i++) {
+            this.total.push(this.tips[i]+this.bill[i]);
+        }
+    }
+
+    getTotal(){
+        return this.total;
+    }
+
+
+}
+
+console.log(" Created class Bill to calculate tips, total");
+console.log("John's bills");
+var bill_A =  new Bill([124, 48, 268, 180, 42]);
+bill_A.calculateTotal();
+console.log(bill_A.getTips(),bill_A.getTotal());
+
+console.log("Marks's bills");
+var bill_B =  new Bill([200, 324, 268, 180, 13]);
+bill_B.calculateTotal();
+console.log(bill_B.getTips(),bill_B.getTotal());
