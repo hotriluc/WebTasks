@@ -53,41 +53,114 @@
 
 
 // =========Primitives vs Objects==========
-var a,b;
-a = 26;
-b = a;
-a = 39;
-console.log(a,b);
+// var a,b;
+// a = 26;
+// b = a;
+// a = 39;
+// console.log(a,b);
 
-var mike = {
-    name:'Mike',
-    age: 26
+// var mike = {
+//     name:'Mike',
+//     age: 26
+// }
+
+// var john = mike;
+// //now mike and john have age of 30
+// mike.age = 30;
+
+// //Trying to change john name to 'Steve' 
+// // and now mike and john variables have name 'Steve'
+// // The reason why it's happening because we are changing property of object that stores in he memory
+// // and both variables john and mike are pointing(have a reference) to that object
+// john.name = 'Steve';
+
+// var age = 27;
+// var guy = {
+//     name: "Luc",
+//     city: "Kharkiv"
+// }
+
+// function change(a,b) {
+//     //If you pass primitive type ypu actually use a copy of it
+//     // but if you use object type as arg then you use its reference to an object
+//     // it means that changing properties of the object in function will affect defined object outside the function
+//     // and sometimes it really difficult to cath bugs because of this problem
+//     a = 200;
+//     b.city = 'Krakow'; 
+// }
+
+// console.log(a);//27
+// console.log(guy.city);//Krakow
+
+
+// =========Passing function as argument==========
+
+var arr = [1996, 1993, 1985, 1997, 2000, 1000];
+
+
+function calcArr(arr, fn) {
+    var age = [];
+    arr.forEach(item => age.push(fn(item)));
+
+    return age;
+}
+function calcAge(el){
+    return 2020 - el;
 }
 
-var john = mike;
-//now mike and john have age of 30
-mike.age = 30;
-
-//Trying to change john name to 'Steve' 
-// and now mike and john variables have name 'Steve'
-// The reason why it's happening because we are changing property of object that stores in he memory
-// and both variables john and mike are pointing(have a reference) to that object
-john.name = 'Steve';
-
-var age = 27;
-var guy = {
-    name: "Luc",
-    city: "Kharkiv"
+function isFullAge(el) {
+    return age >= 18;
 }
 
-function change(a,b) {
-    //If you pass primitive type ypu actually use a copy of it
-    // but if you use object type as arg then you use its reference to an object
-    // it means that changing properties of the object in function will affect defined object outside the function
-    // and sometimes it really difficult to cath bugs because of this problem
-    a = 200;
-    b.city = 'Krakow'; 
+function maxHeartRate(el) {
+    if (el>=18 && el<81){
+     return Math.round( 206.9 - (0.67*el));
+    } else {
+        return 'holy moly';
+    }
 }
 
-console.log(a);//27
-console.log(guy.city);//Krakow
+function whatGeneration(el) {
+    if (el>=1980 && el <= 2000) {
+        return 'milenial';
+    } else if (el > 2000){
+        return 'zoomer';
+    } else {
+        return 'boomer'
+    }
+}
+
+
+var age = calcArr(arr, calcAge);
+var generation = calcArr(arr, whatGeneration);
+var fullAges = calcArr(age, isFullAge);
+var heartRates = calcArr(age, maxHeartRate);
+console.log("Year of birth:",arr);
+console.log('Generation:',generation);
+console.log("Age:",age);
+console.log("Over 18: ",fullAges);
+console.log("Max heart rate",heartRates);
+
+// =========Functions that return function==========
+
+function interviewQuestion(job){
+    if (job ==='designer'){
+        return function(name) {
+            console.log(name + ', can you explain what UX is?');
+        }
+    } else if (job ==='teacher') {
+        return function(name) {
+            console.log(name + ', what subject do you teach?');
+        }
+    } else {
+        return function(name) {
+            console.log(name + ', what do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+
+teacherQuestion('Lukas');
+
+interviewQuestion('designer')('Mike');
