@@ -251,61 +251,213 @@
 
 // =========Bind call and apply==========
 
-var mike = {
-    name: 'Mike',
-    job: 'teacher',
-    age: 28,
-    presentetion: function(style, partOfDay){
-        if (style==='formal'){
-            console.log('Good '+partOfDay+', ladies and gentlemen I\'m '+ this.name+' I\'m a '+this.job+
-            ' and I\'m a '+this.age+' years old');
-        } else if (style === 'informal'){
-            console.log('Hi, boys and girls I\'m '+ this.name+' I\'m a '+this.job+
-            ' and I\'m a '+this.age+' years old. Hoping you will have a good'+partOfDay);
-        }
+// var mike = {
+//     name: 'Mike',
+//     job: 'teacher',
+//     age: 28,
+//     presentetion: function(style, partOfDay){
+//         if (style==='formal'){
+//             console.log('Good '+partOfDay+', ladies and gentlemen I\'m '+ this.name+' I\'m a '+this.job+
+//             ' and I\'m a '+this.age+' years old');
+//         } else if (style === 'informal'){
+//             console.log('Hi, boys and girls I\'m '+ this.name+' I\'m a '+this.job+
+//             ' and I\'m a '+this.age+' years old. Hoping you will have a good'+partOfDay);
+//         }
+//     }
+// }
+
+// mike.presentetion('informal', 'morning');
+
+// var emily = {
+//     name: 'Emily',
+//     job: 'designer',
+//     age: 30,
+// }
+
+// mike.presentetion.call(emily, 'formal','night');
+  
+// // mike.presentetion.apply(emily, [args]) not gonna work because our function does not expect an array
+// //bind allows us to preset some args and pass anothers later
+// var emilyPresentInformal = mike.presentetion.bind(emily,'informal');
+// emilyPresentInformal('day');
+
+
+// var arr = [1996, 1993, 1985, 1997, 2000, 1000, 2015];
+
+
+// function calcArr(arr, fn) {
+//     var age = [];
+//     arr.forEach(item => age.push(fn(item)));
+
+//     return age;
+// }
+// function calcAge(el){
+//     return 2020 - el;
+// }
+
+// function isFullAge(limit, el) {
+//     return el >= limit;
+// }
+
+
+
+// var age = calcArr(arr, calcAge);
+// //var fullAgesJP = calcArr(age, isFullAge);  won't work because in calcArr passed fucntion expect 1 argument
+// // and our isFullAge function accept 2 arguments
+// //But passsing the copy of isFullAGe with preset limit value will work, beause right now we will pass only 1 value
+// var fullAgesJP = calcArr(age, isFullAge.bind(this, 20));
+
+// console.log(age);
+// console.log(fullAgesJP);
+
+
+
+
+// =========Coding challenge 7==========
+
+// function getRandomQuestion(arr){
+//     return arr[Math.floor(Math.random()*arr.length)];
+// }
+
+// function printQuestion(el){
+//     //console.log(el);
+//     console.log('Question: '+el.question);
+//     console.log('Choose one of these answers:');
+
+//     for (var i = 0; i<el.answer.length; i++){
+//         console.log(i+") "+el.answer[i]);
+//     }
+// }
+
+// function checkAnswer(question){
+//     var answer = prompt('Type the number of answer');
+//         if (answer==randomQuestion.correctAnswer){
+//             console.log('You are right');
+//             score++;
+//             console.log('Your score is: '+score);
+//             //calling function that will chose a new random question
+            
+//         } else if(answer =='-1'){
+//             return -1;
+//         }
+        
+//         else{
+//             console.log('Sorry, try again');
+//             console.log(score);
+//         }
+// }
+
+// function getQuestion(arr){
+   
+//     var randomQuestion = getRandomQuestion(arr);
+    
+
+//     return function (){
+        
+//         printQuestion(randomQuestion);
+        
+//         var answer = prompt('Type the number of answer');
+//         if (answer==randomQuestion.correctAnswer){
+//             console.log('You are right');
+//             score++;
+//             console.log('Your score is: '+score);
+//             //calling function that will chose a new random question
+//             return getQuestion(arr)();
+            
+//         } else if(answer =='-1'){
+//             return -1;
+//         }
+        
+//         else{
+//             console.log('Sorry, it is wrong');
+//             console.log(score);
+//         }
+//         console.log('======');
+//     }
+    
+// }
+
+
+//Creating function constructor for Question
+
+var Question = function(question, answer, correctAnswer) {
+    this.question = question;
+    this.answer = answer;
+    this.correctAnswer = correctAnswer;
+}
+
+Question.prototype.printQuestion = function(){
+    console.log('Question: '+this.question);
+    console.log('Choose one of these answers:');
+
+    for (var i = 0; i<this.answer.length; i++){
+        console.log(i+") "+this.answer[i]);
     }
 }
 
-mike.presentetion('informal', 'morning');
-
-var emily = {
-    name: 'Emily',
-    job: 'designer',
-    age: 30,
+//Passing score()'s inner function as callback
+Question.prototype.checkAnswer = function(answer, callback){
+    
+        if (answer==this.correctAnswer){
+            console.log('You are right');
+            console.log(callback(true));
+            //calling function that will chose a new random question
+            
+        } else if(answer =='-1'){
+            return -1;
+        }
+        
+        else{
+            console.log('Sorry, try again');
+            console.log(callback(true));
+            // console.log(score);
+            this.printQuestion();
+            var answerAgain = prompt('Type the number of answer');
+            this.checkAnswer(answerAgain);
+        }
 }
 
-mike.presentetion.call(emily, 'formal','night');
-  
-// mike.presentetion.apply(emily, [args]) not gonna work because our function does not expect an array
-//bind allows us to preset some args and pass anothers later
-var emilyPresentInformal = mike.presentetion.bind(emily,'informal');
-emilyPresentInformal('day');
-
-
-var arr = [1996, 1993, 1985, 1997, 2000, 1000, 2015];
-
-
-function calcArr(arr, fn) {
-    var age = [];
-    arr.forEach(item => age.push(fn(item)));
-
-    return age;
-}
-function calcAge(el){
-    return 2020 - el;
+//Not allowing to get acces of the local defined variable score, so using callbacks
+//e.g Each created variable which returning inner function will has different score
+// inner function explanation if user has answered right, score would've been incresed
+function score(){
+    var score = 0;
+    return function(correctFlag){
+        if(correctFlag) { score++}
+        
+        return score;
+    }
 }
 
-function isFullAge(limit, el) {
-    return el >= limit;
-}
+//As we described above keepScore will containt one score, and if we create another variable
+// e.g keepScore2 they won't interfere each other;
+var keepScore = score();
+function startQuiz(questions){
+    var randomQuestion  = questions[Math.floor(Math.random()*questions.length)];
+
+    randomQuestion.printQuestion();
+    var answer = prompt('Type the number of answer');
+       if (answer===-1){
+           return  -1;
+       } else { 
+           //we passing inner function of function score()
+           randomQuestion.checkAnswer(answer, keepScore);
+            startQuiz(questions);
+       }
+       
+    }
 
 
 
-var age = calcArr(arr, calcAge);
-//var fullAgesJP = calcArr(age, isFullAge);  won't work because in calcArr passed fucntion expect 1 argument
-// and our isFullAge function accept 2 arguments
-//But passsing the copy of isFullAGe with preset limit value will work, beause right now we will pass only 1 value
-var fullAgesJP = calcArr(age, isFullAge.bind(this, 20));
 
-console.log(age);
-console.log(fullAgesJP);
+
+
+
+// TESTING
+var nameQuestion = new Question('What is my name?',['Max','Luc', 'David', 'John'], 1);
+var yearQuestion = new Question('When I was born?',[1997,2000, 1990, 2005], 0);
+var cityQuestion = new Question('Where do I live?',['US','UK', 'UA', 'VN'], 2);
+
+var questions = [nameQuestion, yearQuestion, cityQuestion];
+
+startQuiz(questions);
