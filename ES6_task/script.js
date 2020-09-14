@@ -99,47 +99,47 @@
 
 
 //ES5
-var box5 = {
-    color:'green',
-    position: 1,
-    clickMe: function(){
-        //if you gonna use this. keyword as commented statement bellow 
-        // it won;t output color and posiion of object itself because 
-        // in regular functions this points to window object
-        // so you have to save this in variable and than use it
-        var self = this; 
+// var box5 = {
+//     color:'green',
+//     position: 1,
+//     clickMe: function(){
+//         //if you gonna use this. keyword as commented statement bellow 
+//         // it won;t output color and posiion of object itself because 
+//         // in regular functions this points to window object
+//         // so you have to save this in variable and than use it
+//         var self = this; 
 
 
-        document.querySelector('.green').addEventListener('click', function(){
-            // var str = 'This is '+this.color+' box, position: '+this.position;
-            var str = 'This is '+self.color+' box, position: '+self.position;
-            alert(str);
-        });
-    }
-}
+//         document.querySelector('.green').addEventListener('click', function(){
+//             // var str = 'This is '+this.color+' box, position: '+this.position;
+//             var str = 'This is '+self.color+' box, position: '+self.position;
+//             alert(str);
+//         });
+//     }
+// }
 
-// box5.clickMe();
+// // box5.clickMe();
 
-//ES6
-const box6 = {
-    color:'green',
-    position: 1,
-    clickMe: function(){
+// //ES6
+// const box6 = {
+//     color:'green',
+//     position: 1,
+//     clickMe: function(){
         
 
 
 
-        document.querySelector('.green').addEventListener('click', () => 
-        {   
-            //this works because arrow function shares this keywords with its surroundings 
-            // in our case this in arraw functions points to object
-            var str = 'This is '+this.color+' box, position: '+this.position;
-            alert(str);
-        });
-    }
-}
+//         document.querySelector('.green').addEventListener('click', () => 
+//         {   
+//             //this works because arrow function shares this keywords with its surroundings 
+//             // in our case this in arraw functions points to object
+//             var str = 'This is '+this.color+' box, position: '+this.position;
+//             alert(str);
+//         });
+//     }
+// }
 
-box6.clickMe();
+// box6.clickMe();
 
 // const box66 = {
 //     color:'green',
@@ -161,31 +161,116 @@ box6.clickMe();
 // }
 
 
-function Person (name) {
-    this.name = name;
+// function Person (name) {
+//     this.name = name;
+// }
+
+// Person.prototype.myFriends5 = function(friendsArr){
+//     //here this point to object
+
+//     var arr = friendsArr.map( function(cur){
+//         //but in here this point to global obj
+//         return cur + ' is friend of '+ this.name;
+//     }.bind(this));
+//     //binding this thta point to object persto to function 
+
+//     console.log(arr);
+// }
+
+// Person.prototype.myFriends6 = function(friendsArr){
+//     var arr = friendsArr.map( (cur) => `${cur} is friend of ${this.name}`);
+//     console.log(arr);
+// }
+
+
+
+// var mike = new Person('Mike');
+// mike.myFriends5(['mathew','johnn']);
+// mike.myFriends6(['mathew','johnn'])
+
+
+//=================DESTRUCTURING======
+
+
+// var max = ['Max', 16];
+// var name_1  = max[0];
+// var age_1 = max[1];
+// console.log(name_1,age_1);
+
+
+// //ES6 destructing
+
+// const [name_m, age_m] = max;
+// console.log(name_m, age_m);
+
+
+// function calcAgeRetirment(yearOfBirth){
+
+//     const age = new Date().getFullYear() - yearOfBirth;
+
+//     return [age, 65 - (age)];
+// }
+
+
+// const [age2,retire2] = calcAgeRetirment(1997);
+// console.log(age2, retire2);
+
+// var obj = {
+//     name:'max',
+//     age: 16
+// }
+
+// const {name:a, age:b} = obj
+// console.log(a,b);
+
+
+//================ARRAY ES6
+
+const boxes = document.querySelectorAll('.box'); //nodeList
+const box5 = Array.prototype.slice.call(boxes);
+const boxesArr = Array.from(boxes);
+
+boxesArr.forEach( (el) => el.style.backgroundColor = 'dodgerblue');
+
+
+// but foreach and map has no break or continue
+// so you should iterate it by yourself if you need a breakpoint
+
+//ES5
+// for (var i = 0; i<boxesArr.length; i++) {
+//     if(boxesArr[i].className==='box blue'){
+//         continue;
+//     }
+
+//     boxesArr[i].textContent = 'i changed to blue';
+// }
+
+//===for of 
+
+for (const item of boxesArr) {
+    if (item.className.includes('blue')) {
+        continue;
+    }
+    item.textContent= 'I had been changed to blue with for..of loop';
 }
 
-Person.prototype.myFriends5 = function(friendsArr){
-    //here this point to object
 
-    var arr = friendsArr.map( function(cur){
-        //but in here this point to global obj
-        return cur + ' is friend of '+ this.name;
-    }.bind(this));
-    //binding this thta point to object persto to function 
+var ages = [12,15,20,23,49];
 
-    console.log(arr);
-}
-
-Person.prototype.myFriends6 = function(friendsArr){
-    var arr = friendsArr.map( (cur) => `${cur} is friend of ${this.name}`);
-    console.log(arr);
-}
+var full = ages.map(function(cur){
+    return cur >=18;
+});
+console.log(full);
+console.log(full.indexOf(true));
 
 
+//Es6
 
-var mike = new Person('Mike');
-mike.myFriends5(['mathew','johnn']);
-mike.myFriends6(['mathew','johnn'])
+//Finding index of value  ( it will find the first)
+console.log(ages.findIndex( (cur) => cur >=18));
 
+//Finding value  ( it will find the first)
+console.log(ages.find(cur => cur>=18));
+
+// if you want to get all you should loop
 
